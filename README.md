@@ -2,6 +2,10 @@
 
 ## Preparations
 
+Note that we will not cover basic python installation or how to set up a python environment. If you are new to python, we recommend you check out the [Python documentation](https://docs.python.org/3/tutorial/index.html) or [Anaconda](https://www.anaconda.com/docs/getting-started/getting-started) for a more comprehensive guide.
+
+However, if you want a more comprehensive environment, I recommend you install either [Spyder](https://www.spyder-ide.org) or [JupyterLab](https://jupyter.org/), or just come along and use your favorite IDE.
+
 ### Installing `cpm`
 
 To install the `cpm` package, you can use the following command in your terminal:
@@ -20,7 +24,7 @@ pip install -e .
 
 ### Installing dependencies
 
-There is no need to install any additional dependencies, as the required should be installed alongside `cpm`. However, if you want a more comprehensive environment, I recommend you install either [Spyder](https://www.spyder-ide.org) or [JupyterLab](https://jupyter.org/), or use your favorite IDE.
+There is no need to install any additional dependencies, as the required should be installed alongside `cpm`.
 
 ### Installing `cpm` via Anaconda
 
