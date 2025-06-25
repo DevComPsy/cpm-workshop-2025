@@ -210,7 +210,8 @@ __marimo__/
 .DS_Store
 .AppleDouble
 .LSOverride
-Icon[]
+Icon[
+]
 
 # Thumbnails
 ._*
@@ -986,3 +987,4 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+.vscode/settings.json
