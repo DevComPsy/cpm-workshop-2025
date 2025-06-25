@@ -43,3 +43,9 @@ If you want to use `cpm` in JupyterLab or Google Colab, you can install it direc
 ```python
 !pip install git+https://github.com/DevComPsy/cpm.git
 ```
+
+## Running the workshop
+
+To run the workshop, you can either clone the repository or download the files directly from GitHub.
+The exercises are designed to be run in a Jupyter notebook, but you can also run them in any Python environment that supports the `cpm` package.
+Uncompleted exercises are in the `exercises` folder, and completed exercises are in the `solutions` folder.
