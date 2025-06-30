@@ -4,7 +4,7 @@
 
 Note that I will not cover basic python installation or how to set up a python environment. If you are new to python, I recommend you check out the [Python documentation](https://docs.python.org/3/tutorial/index.html) or [Anaconda](https://www.anaconda.com/docs/getting-started/getting-started) for a more comprehensive guide.
 
-However, if you want a more comprehensive environment, I recommend you install either [Spyder](https://www.spyder-ide.org) or [JupyterLab](https://jupyter.org/), or just come along and use your favorite IDE.
+However, if you want a more comprehensive environment, I recommend you simply use Google Colab, which is a free Jupyter notebook environment that runs in the cloud and requires no setup. You can access it [here](https://colab.research.google.com/)
 
 ### Installing `cpm`
 
