@@ -4,22 +4,14 @@
 
 Note that I will not cover basic python installation or how to set up a python environment. If you are new to python, I recommend you check out the [Python documentation](https://docs.python.org/3/tutorial/index.html) or [Anaconda](https://www.anaconda.com/docs/getting-started/getting-started) for a more comprehensive guide.
 
-However, if you want a more comprehensive environment, I recommend you simply use Google Colab, which is a free Jupyter notebook environment that runs in the cloud and requires no setup. You can access it [here](https://colab.research.google.com/)
+However, we recommend you simply use Google Colab, which is a free Jupyter notebook environment that runs in the cloud and requires no setup. You can access it [here](https://colab.research.google.com/)
 
 ### Installing `cpm`
 
 To install the `cpm` package, you can use the following command in your terminal:
 
 ```bash
-pip install git+https://github.com/DevComPsy/cpm.git
-```
-
-Or alternatively, you can clone the repository and install it locally:
-
-```bash
-git clone https://github.com/DevComPsy/cpm.git
-cd cpm
-pip install -e .
+pip install cpm-toolbox
 ```
 
 ### Installing dependencies
@@ -33,7 +25,7 @@ If you prefer to use Anaconda, I recommend you create a new environment and inst
 ```bash
 conda create -n cpm python=3.12.4
 conda activate cpm
-pip install git+https://github.com/DevComPsy/cpm.git
+pip install cpm-toolbox
 ```
 
 ### Installing `cpm` in JupyterLab or Google Colab
