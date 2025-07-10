@@ -20,6 +20,19 @@
 
 Let us look at a problem first. Imagine it is Friday night, you are done for the week, and I mean you are wasted. You cannot be bothered to cook, so you order a pizza. 
 
+\section{The bandit problem}
+
+Now, imagine you are a participant in an experiment. Your job is to maximise rewards by choosing between two options, between two slot machines. You choose one, and you get a reward. You choose the other, and you get a reward. You do this for a while, and you start to notice that one of the machines gives you more rewards than the other. This leads you to an understanding of the environment you are in, which means that you learnt something about the rewarding structure of the environment (the mapping between different slot machines and rewards). This is called the bandit problem, and it is a classic problem in reinforcement learning, economics and decision-making. This task is well studied, and it is a very standard task to use when you want to investigate learning processes in humans. We will be using this task in the workshop, and we will use it to illustrate how computational models can be used to understand learning processes.
+
+\section{What are we interested in for the bandit problem?}
+
+So, we have an experiment, let us figure out what is our theories about what is happening in people's heads. For our current purposes, we will skip the thinking part and go straight to assuming two psychological processes here:
+
+The first is learning. We assume that people learn about the rewards of the two slot machines, and they adjust their behaviour accordingly. We hypothesise that it is an error-driven learning process, such that humans make predictions about what will happen if they choose a certain option, then calculate the difference between their prediction and the reward or feedback they received, and use a portion of this difference to update their belief about the rewardingness of a given option. This is a very common assumption in cognitive psychology, and it is often used to explain how people learn from experience. So, we will use a simplified version of the most famous equation in psychology, the delta rule. This process has its accompanying parameter, the learning rate $\alpha$, which determines how much you update your belief about the rewardingness of a given option based on the feedback you received. We will look at how high and low learning rates affect the learning process in the first exercise.
+
+The second is decision-making. We assume a simple ratio rule where we treat it as a non-competitive decision-making process, so that options do not compete with each other, but rather the decision is made based on the expected value of each option. This is a again a very common assumption in cognitive psychology, and it is probably the most common way to model decision-making in cognitive psychology. It is going to be a simple SoftMax rule, which is a more sophisticated version of the ratio rule, also called Luce's choice axiom. This rule has its own parameter, the inverse temperature $\beta$, which determines how sensitive you are to value differences between choice options.
+
+Now that was quite a bit of jargon, and names, and maybe abbrevations as well. The reason I am mentioning these things here is that so you can go on an google the keywords.
 
 \section{Discrepancy functions}
 
