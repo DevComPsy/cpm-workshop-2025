@@ -20,47 +20,6 @@
 
 Let us look at a problem first. Imagine it is Friday night, you are done for the week, and I mean you are wasted. You cannot be bothered to cook, so you order a pizza. 
 
-\section{Definitions of Computational Modeling}
-
-So, this is a crash-course slash half-day workshop on computational modeling, so we must begin with some definitions. This will be our first problem. As you might have observed, definitions of things become somewhat vague when they become popular. I broke this down into three distinct groups that I think are useful for us to consider:
-
-1. Computational modeling is related to the formal expression of theories of cognition. A formal psychological model, as defined in this group, is a mathematically specified theory that is implemented as a computable algorithm for the purpose of simulating some aspect of human, or animal, behavior. This is the straing, where the formalisiation helps us posit mechanisms of cognition, that we then implement to test whether our theories correspond to the real world. Two examples here are theories about the representations underlying categories (exemplars vs prototypes) and theories of attentiona and learning (e.g. attention is allocated to reduce prediction error).
-
-2. The next catgegory is more about measuring some aspects of behaviour. In this case, computational models are defined to measure some for of psychological construct (e.g. bias-free accuracy in recognition memory tasks). Two examples there are models based on Signal Detection Theory (SDT) to measure how well confidence judgemenets are aligned with the actual performance of the participant; and for example establish reference points via normative modeling, which is then used to measure individual differences in cognitive performance or any domain really.
-
-3.  The last category, where computational modeling as a phrase appears, is about the use of computational models as in statistical modeling. For example, computational models as statistical models help us cluster participant strategies into finite set of groups, analysing generalization gradients across continuously varying stimuli, or quantifyinf relationships between variables in a dataset. 
-
-One thing you might notice when you engage with the literature is that these three categories are overlapping. For example, a model that is used to measure some aspect of behavior can incorporate (sometimes implicitly) some theoretical assumption about cognition. Similarly, statistical models can be used to formalize theories or measure constructs.
-
-We are largely concerned with the first category today, but our toolbox (the one we will be getting acquainted today) covers mainly the first two even thought you can do all three.
-
-\section{An example: the Rescorla-Wagner model}
-
-So, the best way to continue is to give you an example of a computational model. The Rescorla-Wagner model is a classic model of associative learning, which is a type of learning that occurs when an organism learns contingencies between stimuli and outcomes. I pick two reasons for this example: first, the rescorla-wagner delta rule equation is probably the most influential equation in psychology, and second, at least three groups of people came up with the idea independent from each other (one from psychology animal cognition, one from artificial intellingence, and one from electrical engineering).
-
-Now I will not go into a history much deeper, but let me just briefly set the context here. Models of learning at the time were largely single linear operators, such as Bush and Mosteller's model, where it was assumed that the strength of the association between a stimulus and an outcome is not just a linear function of the number of times the stimulus and outcome are presented together, but a decelerating function, where learning tends to slow as it proceeds. This is depicted in a famous learning curve you see there, where learning moves towards an upper limit, delta, as the number of trials increases. That is the prediciton error, the model expressed by Bush and Mosteller, capturing the idea that the strength of an association between a stimulus and an outcome first increases rapidly, and then slows down with time (as prediction error decreases according to the model). This increase is also modulated via a learning rate parameter, which is a constant that determines how quickly the association is learned.
-
-Now this is not a good model of how people or even animals learn. How do we know this? I give you one reason from Psychology, but you can probably find some in other fields as well.
-
-Enter Blocking. A mouse first repeatedly observes that a light is followed by food. It learns to salivate to the light. Next a tone is presented at the same time as the light, again followed by food. This also happens multiple times. Finally, the tone is presented alone, without the light.
-
-What does the Bush-Mosteller system predict in this case?
-
-Well, if you pair light with food often enough, the association will max out, and then stop. Now, when you present the tone and light together, the association to the light won't increase any further, but the association between tone and food will again, max out. So, when the tone is presented without the light, the mouse expects food and so salivates.
-
-This is not what happens. In fact, little salivation occurs to the tone alone. This is how the phenomenon gets its name - the association of the tone to the food seems to be blocked by the pre-existing association of the light to the food.
-
-Rescorla and Wagner (1972) proposed a new model to account for this. They made a very slight modification to the Bush-Mosteller model.
-
-the Rescorla-Wagner theory takes the position that learning should stop when the sum of the input activations matches the teaching signal. In other words, when the outcome - food - is fully predicted. This idea allows it to predict blocking.
-
-Let's see how that works. When the food and light are presented together, the association between them rises to one and stops, just like in Bush-Mosteller.
-
-However, now the tone comes along. The food is already fully predicted by the light, and so from the perspective of Rescorla-Wagner, there's nothing to learn. The weight between tone and food remains at zero. This is often described as error-correcting learning - we only learn to the extent we need to in order to avoid errors.
-
-I included a more general form here, which is what we usualyl mean nowadays when we say the delta rule.
-
-We will use a version of this learning rule in our worksheets later, but I want to make the point that building models are hard. The simple modification they made was not mathematically discovered, like they did not stumble upon it by accident through rearranging equations, but was a result of implementing some hypotheses about how learning works. So we will do something similar here, apart from the fact that we will not invent a new model, but montage together a model from existing components. We will have a task, and we will have a model. So the remainder of this lecture, I will largely talk about what we do after the model is built.
 
 \section{Discrepancy functions}
 

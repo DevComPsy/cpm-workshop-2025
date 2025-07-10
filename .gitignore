@@ -988,3 +988,4 @@ FodyWeavers.xsd
 *.msm
 *.msp
 .vscode/settings.json
+lecture/orphans.tex
