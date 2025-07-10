@@ -2,7 +2,7 @@
 
 ## Preparations
 
-Note that I will not cover basic python installation or how to set up a python environment. If you are new to python, I recommend you check out the [Python documentation](https://docs.python.org/3/tutorial/index.html) or [Anaconda](https://www.anaconda.com/docs/getting-started/getting-started) for a more comprehensive guide.
+Please make sure to have a completely set-up python environment. If you are new to python, we recommend you check out the [Python documentation](https://docs.python.org/3/tutorial/index.html) or [Anaconda](https://www.anaconda.com/docs/getting-started/getting-started) for a more comprehensive guide.
 
 However, we recommend you simply use Google Colab, which is a free Jupyter notebook environment that runs in the cloud and requires no setup. You can access it [here](https://colab.research.google.com/). The advantage of using Google Colab is that it comes with many pre-installed packages, and you can install `cpm` by simply including an extra line at the beginning of your notebook, see below.
 
