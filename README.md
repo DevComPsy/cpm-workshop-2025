@@ -44,6 +44,6 @@ Uncompleted exercises are in the `exercises` folder, and completed exercises are
 
 ### Jupyter Notebook Exercises
 
-Exercise 1: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/lenarddome/cpm-workshop-2025/blob/main/exercises/01-model-building.ipynb)
-Exercise 2: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/lenarddome/cpm-workshop-2025/blob/main/exercises/02-model-parameter-recovery.ipynb)
-Exercise 3: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)]()
+* **Exercise 1 - model building**: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/DevComPsy/cpm-workshop-2025/blob/main/exercises/01-model-building.ipynb)
+* **Exercise 2 - model fitting**: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/DevComPsy/cpm-workshop-2025/blob/main/exercises/02-fitting-to-data.ipynb)
+* **Exercise 3 - parameter recovery**: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/DevComPsy/cpm-workshop-2025/blob/main/exercises/03-model-parameter-recovery.ipynb)
