@@ -1,6 +1,5 @@
 \documentclass[12pt]{article}
 
-\usepackage[utf8]{inputenc}
 \usepackage{amsmath, amssymb}
 \usepackage{graphicx}
 \usepackage{hyperref}
@@ -64,9 +63,9 @@ So, we have a model, and we have a discrepancy function that quantifies how well
 
 Most optimisation procedures rely on minimising an objective function, so we will actually minimise the negative log likelihood, which is a common practice and is shown here. There are all sorts of advantages, mainly numerical stability, but it is enough for you now to know that this is what we will do.
 
-So now we have the goal, what is the assumption here? Models that approximate the data well can tell you something about the utility of the model. Essentially, we assume that the model is a good approximation of the data, and that the parameters of the model can be estimated from the data. This is a strong assumption, but it is often necessary to make in order to use computational models in psychology.
+So now we have the goal, what is the assumption here? Models that approximate the data well can tell you something about the utility of the model. Essentially, we assume that the model is a good approximation of the data, and that the parameters of the model can be estimated from the data. This is a strong assumption, but it is often necessary to make in order to use computational models in psychology (computational psychiatry). If you are interested in other ways, ask me during the exercises or in the break.
 
-Why do I say that? Because there are caveats to this. Goodness-of-fit does not capture a lot of  Something I investigated throughougly in my own research.
+Why do I say that? Because there are caveats to this. Goodness-of-fit does not capture a lot of unexplored aspects of models. Something I have quite a bit of experence with.
 
 Let us start with flexibility. A standard rule of thumb says that the number of free parameters provide an upper bound for model flexibility... if a theory has five orthogonal free parameters, then it will be able to fit exactly any five data points; if the parameters are not orthogonal, however, the number of data points the theory can fit exactly is less. Now we will talk about whether the number of parameters are a good indicator of model complexity - briefly, it is not, and it has been empirically shown multiple times that the number of parameters is often not a good indicator of model flexibility (or complexity) when we talk about cognitive models. 
 
@@ -86,6 +85,29 @@ Parameters are identifiable when there is only one possible value given the data
 
 Parameters are not identifiable, when there are multiple possible values that can explain the data. This can happen when the model is too flexible, or when the data is not informative enough to distinguish between different parameter values. As models become more complex, like some of the more complex recurrent networks and cluster-based categorisation modesl I dealt with, evaluating this becomes difficult, because the same dataset can be produced by multiple parameter sets, each corresponding to different underlying representations in the model - even though the model can produce the same data with different parameter sets, its internal state can differ, which corresponds to different predictions about what underlies a certain behavioural response. For the model you will use in the workshop, this is not a problem, because the model is simple enough to not have to worry about it.
 
+This is an overly simplistic view of what parameter recovery and indetifiability means... the more time you spend with models, the more you will realise that it is not always that simple. In a Bayesian framework, or even with simple parameter estimaton, there is uncertainty involved in the estimation process.
+
+\subsection{Ben. J. Wagner on parameter recovery}
+
+ Even with maximum likelihood estimate, which is your best guess, but this estimate is always uncertain.  In a Bayesian framework only -one- param value is at odds with Bayesian inference where the output is a distribution.
+Likewise a well-identified parameter in almost all cases has multiple possible values, which are more or less probable.
+So I think its better to say that the problem with a non-identifiable parameter is when the data does not provide info on how to distinguish between those multiple suggestions/our beliefs dont become more precise.
+
+I would therefore suggest something more specific (because its an important topic):
+
+Parameter identifiability: can we learn from the data?
+Identifiability addresses whether a parameter's value can be effectively estimated from the observed data. In Bayesian modeling, this is about reducing uncertainty about the parameters true value.
+
+Identifiable parameter: The data informs our beliefs. The posterior distribution is narrower and more constrained than our initial prior distribution or with MLE: has a likelihood function with a single, well-defined peak. This means there is a parameter value that maximizes the likelihood of observing the data. As you collect more data, the peak should become sharper and more distinct
+
+Non-identifiable parameter: The data provides little to no information. The posterior distribution looks very similar to the prior, meaning we haven't learned much about the parameter from the data. Or with MLE: results in a likelihood surface that is rather flat. This means different parameter values (or combinations of them) produce the exact same MLE, making it impossible to choose a unique best-fitting parameter. You can't distinguish between them based on the data.
+
+Further on recovery: A parameter must be theoretically identifiable so that we can have any hope of it also being recovered. But identifiability alone doesn't guarantee successful recovery. That also depends on the model and correlation between parameters. e.g. can different combinations of parameters explain the data as well? Model complexity and so on.
+
+\subsection{Return to main narrative}
+
+But for our purposes, this is a good starting point.
+
 This here shows the result of a prototypical parameter recovery procedure. We have two parameters, learning rate and choice stochasticity - don't worry too much about what they mean, you will be explained in the worksheets.
 
 The Pearson correlation is quite high, which means that parameters are identifiable.
@@ -98,11 +120,11 @@ The first issue I want to talk about is \textbf{overfitting}. You have probably 
 
 On the right here, this is demonstrated really well. You have three models with increasing complexity (increasing number of parameters) trying to predict life satisfaction scores as a function of years in marriage. You can see that the more complex models fit the training data better, but they do not generalize well to new data - no one expects satisfaction with life to drop to 0 after 10 years of marriage, but the most complex model predicts that. So, what does this mean for us? If we stick with the complexity dimension, we hav e a push towards simpler models, because they are less likely to overfit the data. But we also have a push towards less model parameters. Usually in the case of less than the number of data points.
 
-This is the way we usually approach the problem of overfitting - through complexity as measured by the number of parameters. Unfortunately, the flexibility added by a free parameter depends on the details of the theory (cf. $\alpha x + \beta x$ with $\alpha x + \beta$; both have two parameters, but the latter is more flexible). The only accurate way to "allow" for the flexibility of a theory, as far as we know, is to determine what the theory predicts, and for that you have to simulate. Some methods try to address this shortcoming by looking at incorporating varaince explained by each parameter into the penalty term. These include information criterion measures that generalize the goodness-of-fit measures across the model's parameter space, assuming that the data is large enough and the parameters are distributed according to Jeffrey's prior. And other measures that try to add measures on how well each parameter 
+This is the way we usually approach the problem of overfitting - through complexity as measured by the number of parameters. Unfortunately, the flexibility added by a free parameter depends on the details of the theory (cf. $\alpha x + \beta x$ with $\alpha x + \beta$; both have two parameters, but the latter is more flexible). The only accurate way to "allow" for the flexibility of a theory, as far as we know, is to determine what the theory predicts, and for that you have to simulate. Some methods try to address this shortcoming by looking at incorporating variance explained by each parameter into the penalty term. These include information criterion measures that generalize the goodness-of-fit measures across the model's parameter space, assuming that the data is large enough and the parameters are distributed according to Jeffrey's prior. And other measures that try to add measures on how well each parameter 
 
 Another important aspect of model comparison is distinguishability. The problem we are facing here is that we often have multiple models and want to be able to identify the one that is better at explaining the data. Model recovery is a method to assess whether we can identify which model generated the data. This is done by simulating data from each model and then fitting the models to the simulated data. Then we can count how many times each model came out on top when fitted against the simulated data, which gives an indication of how well the models can be distinguished from each other. We will talk about it in a second in more details.
 
-Some extra techniques I want to mentnion because I think it is important to be aware of them, even though we will not cover them, are landscaping and parameter space partitioning. Landscaping is a way to extend model recovery by comparing model fits against each other visually. It is a way to check how well one model is preferred over the other in a given comparison. Parameter space partitioning is a little bit more sophisticated. In this approach, we turn model predictions into a finite set of countable discrete outcomes, and we use those to identify regions in the parameter space that correspond to different discrete outcomes (such as different response patterns in a categorization task). This method gives an interesting measure of complexity, that is based on actual model outcomes as opposed to the number of parameters.
+Some extra techniques I want to mention because I think it is important to be aware of them, even though we will not cover them, are landscaping and parameter space partitioning. Landscaping is a way to extend model recovery by comparing model fits against each other visually. It is a way to check how well one model is preferred over the other in a given comparison. Parameter space partitioning is a little bit more sophisticated. In this approach, we turn model predictions into a finite set of countable discrete outcomes, and we use those to identify regions in the parameter space that correspond to different discrete outcomes (such as different response patterns in a categorization task). This method gives an interesting measure of complexity, that is based on actual model outcomes as opposed to the number of parameters.
 
 \section{Model recovery}
 
@@ -113,35 +135,5 @@ In a model recovery, we extend what we learnt about parameter identifiability to
 If the models are distinguishable, then the diagonal cells will be high, and the off-diagonal cells will be low. If the models are not distinguishable, then the diagonal cells will be low, and the off-diagonal cells will be high or comperable. Now it is often the case that models are misspecified and become indistinguishable, like when they share the same parameters or parts of their architecture. Or it could also be the case that the experimental design is not complex enough to distinguish between the models. In this case, we have to return to the drawing board and either change the model or the experimental design.
 
 Now beware that what we mean by confusion matrix here is not what we mean by confusion matrix in machine learning. It is an important distinction, but they can be related under certain conditions.
-
-
-\section{Toolbox}
-
-So, we have now covered the basics of computational modeling, and we have a good understanding of how to build models, estimate their parameters, and compare them. Now we will turn our attention to the toolbox that we will use in the workshop.
-
-I organised these sections to correspond with the exercises that we will be doing and given that we have now covered most of the theoretical basics, we can move on to relate the theory to practice.
-
-First off, the toolbox is new, fresh out of the box. Which means that you will have an impact on what it will become. Thank you for that. Also, the toolbox is not a monolithic entity, but rather a collection of modular and interoperable tools that can be used for different purposes. Some of the tools are more general, while others are more specific to certain types of models or data. The toolbox is designed to be flexible and extensible, so you can add or create your own tools or modify existing ones to suit your needs.
-
-The toolbox also relies on pandas, numpy, and scipy, so if you have encountered those packages, or if you want to do data analysis in python, you can easily generalise what you already know to what we will be doing. And generalise what you learn here to some of the other packages.
-
-One reason for doing this is to avoid reinventing the wheel. If there is a good implementation of gradient search, why try to  write your own? 
-
-But let's not spend too much time here. Let's move on to what we are doing during the exercises. The idea here is to give you a brief overview of what might be a simple computational workflow with some optional extras that extend it.
-
-Start with the toolbox. As I said before it is a collection of tools that are aimed to assist you in different parts of modeling.  It is composed of modules (standard in a python library) that you can call from the standard cpm library to assist you in different modeling steps. The very dense figure you see here depicts how these might work. Each rectangle is a different module, and the arrows show how they are connected to each other. Each group of module indicated by the coloured dashed lines help you with a distinct part of the modeling process. The big arrow on the left shows you a simple modeling workflow, where you start with a model, then you estimate its parameters, draw some inferences on the group-level with techniques we discuss later, and finally you simulate with the estimated parameters. Model and parameter recovery lies outside of this arrow, but similarly involves interaction between modules that are not shown here, but we still do.
-
-So, we have a set of modules that help you build your model, a set of tools that help  you estimate the parameters of your model, and a set of tools that help you do hierarchical modeling. We also have a set of tools that help you simulate data from your model, which is useful for model recovery and parameter recovery.
-
-\subsection{Model parameters}
-
-Previously, we started with building a model. We start our toolbox-wlakthrough there as well. The first thing we do here is parameterisation of the model. What are the paramaters of the model? These parameters will tune the cognitive processes we formally express as equations here.
-
-The toolbox provides two robust and important modules for this. The first is the \texttt{cpm.generators.Value} module, which provides a set of tools to help define each parameter. The second is the \texttt{cpm.generators.Parameters} module, which takes each individual parameters and other variables you need for your model and stores it in one convenient python object. What does this mean? It means that you can define your model parameters in a structured way, that allows you to easily change the parameters of your model without having to rewrite the code. In addition, it gives you several useful methods to manipulate the parameters, such as adding, removing, or modifying them, but more importantly, helps you sample parameters from a prior distribution, calculate posterior densities, update priors, and archive the parameterisation of your model for things such as lab reports.
-
-\subsection{Model construction}
-
-The next step is to build the model. To that effect, the toolbox includes a library of algorithmic components, that you can use to montage your model together.
-
 
 \end{document}

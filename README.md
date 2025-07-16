@@ -41,3 +41,9 @@ If you want to use `cpm` in JupyterLab or Google Colab, you can install it direc
 To run the workshop, you can either clone the repository or download the files directly from GitHub.
 The exercises are designed to be run in a Jupyter notebook, but you can also run them in any Python environment that supports the `cpm` package.
 Uncompleted exercises are in the `exercises` folder, and completed exercises are in the `solutions` folder.
+
+### Jupyter Notebook Exercises
+
+Exercise 1: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/lenarddome/cpm-workshop-2025/blob/main/exercises/01-model-building.ipynb)
+Exercise 2: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/lenarddome/cpm-workshop-2025/blob/main/exercises/02-model-parameter-recovery.ipynb)
+Exercise 3: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)]()
