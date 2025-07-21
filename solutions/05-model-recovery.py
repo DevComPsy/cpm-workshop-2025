@@ -14,10 +14,13 @@ if __name__ == "__main__":
     data["observed"] = data["response"].astype(int)  # convert responses to int
     data.head()
 
+    ## we create all the difference models we want to compare
     model_one_generative, model_one_fitting, parameters = f.model_delta(data)
     model_two_generative, model_two_fitting, parameters_two = f.model_kernel(data)
     model_three_generative, model_three_fitting, parameters_three = f.model_anticorrelated(data)
-    # values = numpy.asarray(parameters.values)
+
+    ## we create a list of the generative models, parameters and fitting methods
+    # to make it easier to loop through them later
     generators = (
         model_one_generative,
         model_two_generative,
@@ -36,19 +39,27 @@ if __name__ == "__main__":
         model_three_fitting,
     )
 
+    ## we create a list of the model names to use later for plots and data organisation
+    ## this is just for convenience, you can use any names you like
     model_names = (
         "delta",
         "kernel",
         "anticorrelated"
     )
 
+    ## we create a copy of the data to use for the simulations
+    ## this is to ensure that we do not modify the original data
+    ## and to keep the data structure consistent
     dataset = data.copy()
 
-
+    ## we run the simulations and fitting for each model
     bigout = pd.DataFrame()
     for x in numpy.arange(100):
         print(f"Run {x + 1} of 100")
         for i in numpy.arange(3):
+            ## we create a simulator for each model
+            ## the simulator will generate data based on the model and parameters
+            ## for many participants
             simulator = cpm.generators.Simulator(
                 wrapper=generators[i],
                 parameters=parameter_sets[i].sample(dataset.ppt.nunique()),
@@ -56,7 +67,11 @@ if __name__ == "__main__":
             )
             simulator.run()
             out = simulator.export()
+            ## we add the simulated data to the dataset
+            ## essentially overwriting the observed variable with
+            ## the simulated responses
             dataset["observed"] = out.response_0
+            ## now we fit all models to the simualted data
             for m in numpy.arange(3):
                 model = fitting[m]
                 ## mute runtime warings
